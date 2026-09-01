@@ -6,8 +6,9 @@ public class CombatController : MonoBehaviour
     private Unit _unit;
     private float _nextAttackTime;
     
+    //Only serialized for easy viewing in editor without needed to activate debug mode
     [SerializeField] private CombatController _target;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake()
     {
         _unit = GetComponent<Unit>();
@@ -16,7 +17,6 @@ public class CombatController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_unit.health <= 0)
@@ -36,13 +36,18 @@ public class CombatController : MonoBehaviour
             _nextAttackTime = 1f / _unit.attackSpeed;
                 
         }
-
-
     }
 
-    private void DealDamage()
+    public void DealDamage(int incomingDamage = 0)
     {
-        _target.TakeDamage(_unit.damage);
+        if (incomingDamage == 0)
+        {
+            _target.TakeDamage(_unit.damage);
+        }
+        else
+        {
+            _target.TakeDamage(incomingDamage);
+        }
     }
 
     private void TakeDamage(float incomingDamage)

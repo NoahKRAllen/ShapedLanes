@@ -44,7 +44,10 @@ public class UnitMover : MonoBehaviour
     private LaneWaypoints _lane;
     private int _waypointIndex;
     private int _direction = 1;
+    
+    //Only serialized for easy viewing in editor without needed to activate debug mode
     [SerializeField] private Transform _target;
+    private Unit _targetUnit;
     private float _scanTimer;
     private MoveState _state = MoveState.FollowingWaypoints;
     private Unit _unit;
@@ -128,7 +131,13 @@ public class UnitMover : MonoBehaviour
         }
 
         _target = closest;
-        _state = _target != null ? MoveState.Attacking : MoveState.FollowingWaypoints;
+        if (_target == null)
+        {
+            _state = MoveState.FollowingWaypoints;
+            return;
+        }
+        _state =  MoveState.Attacking ;
+        _targetUnit = _target.GetComponent<Unit>();
     }
 
     private void TickAttacking()
@@ -136,6 +145,7 @@ public class UnitMover : MonoBehaviour
         if (_target == null)
         {
             _state = MoveState.FollowingWaypoints;
+            _unit.combatController.StopAttack();
             return;
         }
 
@@ -157,10 +167,8 @@ public class UnitMover : MonoBehaviour
         }
         else
         {
-            _unit.combatController.StartAttack(_target.GetComponent<Unit>());
-            // TODO:Attack combat hook here
-            
-            // In attack range - hold position. Hook a combat/attack script in here later.
+            _unit.combatController.StartAttack(_targetUnit);
+            // In attack range - hold position.
             // Still subject to physics separation, so units piling up on the same target
             // will push apart sideways rather than overlap.
             Stop();
@@ -176,6 +184,7 @@ public class UnitMover : MonoBehaviour
         if (_lane == null || _lane.WaypointCount == 0)
         {
             Stop();
+            print("Either lane is null or we have no waypoints setup");
             return;
         }
 
@@ -186,6 +195,7 @@ public class UnitMover : MonoBehaviour
             return;
         }
 
+        //TODO: Trim this and replace it with callable function upon entering trigger boxes that will be setup across the lanes before each waypoint
         if (Vector3.Distance(transform.position, waypoint.position) <= waypointArriveDistance)
         {
             _waypointIndex += _direction;
