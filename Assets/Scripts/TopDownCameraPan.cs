@@ -185,4 +185,21 @@ public class TopDownCameraPan : MonoBehaviour
         worldPos = default;
         return false;
     }
+    
+    private void OnDrawGizmosSelected()
+    {        // 1. Calculate the center point between the two coordinates
+        float centerX = (boundsMin.x + boundsMax.x) / 2f;
+        float centerY = (boundsMin.y + boundsMax.y) / 2f;
+        Vector3 center = new Vector3(centerX, centerY);
+
+        // 2. Calculate the absolute distance (size) between them
+        float sizeX = Mathf.Abs(boundsMax.y - boundsMin.y);
+        float sizeY = Mathf.Abs(boundsMax.x - boundsMin.x);
+        Vector3 size = new Vector3(sizeY, 2, sizeX);
+
+        // 3. Draw the wire cube
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(new Vector3(0, 1.0f, 0), size);
+
+    }
 }

@@ -4,6 +4,9 @@
     Retrofit movement from waypoint system to navmesh, with the option of general guidance waypoints for lanes that aren't straight
     Waypoint system will be reworked into trigger boxes that keep the targets from trying to all reach the same position
     Once unit enters the trigger box, it will be set to aim at the next waypoint, if this is needed at all with the navmesh system
+    -----
+    Change of plans, keeping Waypoint movement with physics control, with a trigger box before each waypoint to act as the swap to the next waypoint
+    -----
     -Ensure collision works fine as well, turn off targeting to do this best
     -Make sure that the towers and base are all still hittable by the 1 range melee units, the fix in place should still work?
     Testing script

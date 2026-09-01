@@ -527,7 +527,7 @@ Transform:
   m_GameObject: {fileID: 227342941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -5}
+  m_LocalPosition: {x: 0, y: 0.5, z: -26.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,7 +661,6 @@ GameObject:
   - component: {fileID: 313498362}
   - component: {fileID: 313498361}
   - component: {fileID: 313498360}
-  - component: {fileID: 313498364}
   m_Layer: 6
   m_Name: FirstPlayerTower
   m_TagString: Untagged
@@ -800,6 +799,7 @@ MonoBehaviour:
   agroRadius: 8
   unitMover: {fileID: 0}
   combatController: {fileID: 0}
+  unitController: {fileID: 0}
 --- !u!114 &313498362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,22 +845,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!208 &313498364
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313498355}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,7 +1237,6 @@ GameObject:
   - component: {fileID: 478906992}
   - component: {fileID: 478906991}
   - component: {fileID: 478906990}
-  - component: {fileID: 478906998}
   m_Layer: 7
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -1296,6 +1279,7 @@ MonoBehaviour:
   agroRadius: 8
   unitMover: {fileID: 0}
   combatController: {fileID: 0}
+  unitController: {fileID: 0}
 --- !u!114 &478906992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,22 +1424,6 @@ Transform:
   - {fileID: 1686205780}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!208 &478906998
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478906989}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &495542469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,7 +1440,6 @@ GameObject:
   - component: {fileID: 495542476}
   - component: {fileID: 495542475}
   - component: {fileID: 495542474}
-  - component: {fileID: 495542478}
   m_Layer: 7
   m_Name: FirstEnemyTower
   m_TagString: Untagged
@@ -1611,6 +1578,7 @@ MonoBehaviour:
   agroRadius: 8
   unitMover: {fileID: 0}
   combatController: {fileID: 0}
+  unitController: {fileID: 0}
 --- !u!114 &495542476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,22 +1624,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
---- !u!208 &495542478
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495542469}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &528708676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1809,6 @@ GameObject:
   - component: {fileID: 802543078}
   - component: {fileID: 802543077}
   - component: {fileID: 802543076}
-  - component: {fileID: 802543084}
   m_Layer: 6
   m_Name: PlayerBase
   m_TagString: Untagged
@@ -1900,6 +1851,7 @@ MonoBehaviour:
   agroRadius: 8
   unitMover: {fileID: 0}
   combatController: {fileID: 0}
+  unitController: {fileID: 0}
 --- !u!114 &802543078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2044,22 +1996,6 @@ Transform:
   - {fileID: 845056355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!208 &802543084
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802543075}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &803164568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2213,7 @@ Transform:
   m_GameObject: {fileID: 849107100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 65}
+  m_LocalPosition: {x: 0, y: 0.5, z: 78.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2601,7 +2537,6 @@ GameObject:
   - component: {fileID: 923747096}
   - component: {fileID: 923747095}
   - component: {fileID: 923747094}
-  - component: {fileID: 923747098}
   m_Layer: 6
   m_Name: SecondPlayerTower
   m_TagString: Untagged
@@ -2740,6 +2675,7 @@ MonoBehaviour:
   agroRadius: 8
   unitMover: {fileID: 0}
   combatController: {fileID: 0}
+  unitController: {fileID: 0}
 --- !u!114 &923747096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2785,22 +2721,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!208 &923747098
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923747089}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &924048813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,7 +3021,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014537168}
-  - component: {fileID: 1014537169}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -3131,38 +3050,6 @@ Transform:
   - {fileID: 803164569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1014537169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014537167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 55
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f47e9a36b73661e4583d94e44e56e357, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1 &1131485551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,7 +3075,7 @@ Transform:
   m_GameObject: {fileID: 1131485551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 80}
+  m_LocalPosition: {x: 0, y: 0.5, z: 102.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3241,8 +3128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TopDownCameraPan
   groundHeight: 0
   useBounds: 1
-  boundsMin: {x: -10, y: -20}
-  boundsMax: {x: 10, y: 75}
+  boundsMin: {x: -8, y: -65}
+  boundsMax: {x: 8, y: 65}
   panSpeedMultiplier: 1
   dragDeadZonePixels: 4
 --- !u!1 &1179074008
@@ -3292,7 +3179,6 @@ GameObject:
   - component: {fileID: 1349603153}
   - component: {fileID: 1349603152}
   - component: {fileID: 1349603151}
-  - component: {fileID: 1349603155}
   m_Layer: 7
   m_Name: SecondEnemyTower
   m_TagString: Untagged
@@ -3431,6 +3317,7 @@ MonoBehaviour:
   agroRadius: 8
   unitMover: {fileID: 0}
   combatController: {fileID: 0}
+  unitController: {fileID: 0}
 --- !u!114 &1349603153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3476,22 +3363,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!208 &1349603155
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349603146}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &1363971610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,7 +3637,7 @@ Transform:
   m_GameObject: {fileID: 1489241829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 45}
+  m_LocalPosition: {x: 0, y: 0.5, z: 58.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3828,7 +3699,7 @@ Transform:
   m_GameObject: {fileID: 1560543705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 10}
+  m_LocalPosition: {x: 0, y: 0.5, z: -1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4723,7 +4594,7 @@ Transform:
   m_GameObject: {fileID: 2058983273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 30}
+  m_LocalPosition: {x: 0, y: 0.5, z: 18.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
