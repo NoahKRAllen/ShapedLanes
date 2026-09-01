@@ -1,0 +1,152 @@
+[2026-08-31T23:13:58.277Z][INFO] Command-line: 'C:\\Program Files\\Unity\\Hub\\Editor\\6000.5.6f1\\Editor\\Data\\Resources\\PackageManager\\Server\\UnityPackageManager.exe' server -s 36848 --ipc-path Unity-Upm-36848 -l 2 --log-file C:\\Users\\NoahK\\ShapedLanes/Logs/upm.log
+[2026-08-31T23:13:58.321Z][INFO] IPC server started (IPC path=Unity-Upm-36848).
+[2026-08-31T23:13:58.322Z][INFO] Hint: To connect to this UPM instance, launch Unity with the command-line parameter -upmIpcPath Upm-36848.
+[2026-08-31T23:14:07.052Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:07.231Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:14:07.244Z][INFO] config:project:get-registries --> 200 (13 ms)
+[2026-08-31T23:14:07.246Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:07.296Z][INFO] project:list-packages --> 200 (244 ms)
+[2026-08-31T23:14:07.488Z][INFO] project:list-packages --> 200 (242 ms)
+[2026-08-31T23:14:16.603Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:16.633Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:16.802Z][INFO] project:list-packages --> 200 (199 ms)
+[2026-08-31T23:14:16.826Z][INFO] project:list-packages --> 200 (193 ms)
+[2026-08-31T23:14:19.342Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:19.463Z][INFO] project:list-packages --> 200 (121 ms)
+[2026-08-31T23:14:19.533Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:14:19.537Z][INFO] config:project:get-registries --> 200 (4 ms)
+[2026-08-31T23:14:22.680Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:22.829Z][INFO] project:list-packages --> 200 (148 ms)
+[2026-08-31T23:14:28.529Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:14:29.189Z][INFO] project:list-packages --> 200 (660 ms)
+[2026-08-31T23:15:59.036Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:15:59.250Z][INFO] packages:get-packageinfo --> 200 (214 ms)
+[2026-08-31T23:16:06.179Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:16:06.206Z][INFO] packages:get-packageinfo --> 200 (27 ms)
+[2026-08-31T23:44:20.514Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:44:20.667Z][INFO] project:list-packages --> 200 (153 ms)
+[2026-08-31T23:44:21.094Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:44:21.231Z][INFO] project:list-packages --> 200 (137 ms)
+[2026-08-31T23:44:21.235Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:44:21.239Z][INFO] config:project:get-registries --> 200 (4 ms)
+[2026-08-31T23:44:22.358Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:44:22.588Z][INFO] packages:get-packageinfo --> 200 (230 ms)
+[2026-08-31T23:49:02.971Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:49:03.081Z][INFO] project:list-packages --> 200 (110 ms)
+[2026-08-31T23:49:03.416Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:49:03.548Z][INFO] project:list-packages --> 200 (132 ms)
+[2026-08-31T23:49:03.568Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:49:03.572Z][INFO] config:project:get-registries --> 200 (4 ms)
+[2026-08-31T23:49:04.610Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:49:04.834Z][INFO] packages:get-packageinfo --> 200 (224 ms)
+[2026-08-31T23:49:56.698Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:49:56.821Z][INFO] project:list-packages --> 200 (123 ms)
+[2026-08-31T23:49:57.139Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:49:57.273Z][INFO] project:list-packages --> 200 (134 ms)
+[2026-08-31T23:49:57.301Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:49:57.304Z][INFO] config:project:get-registries --> 200 (3 ms)
+[2026-08-31T23:49:58.329Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:49:58.575Z][INFO] packages:get-packageinfo --> 200 (246 ms)
+[2026-08-31T23:50:08.244Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:50:08.346Z][INFO] project:list-packages --> 200 (103 ms)
+[2026-08-31T23:50:08.667Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:50:08.780Z][INFO] project:list-packages --> 200 (112 ms)
+[2026-08-31T23:50:08.815Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:50:08.818Z][INFO] config:project:get-registries --> 200 (3 ms)
+[2026-08-31T23:50:09.951Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:50:09.985Z][INFO] packages:get-packageinfo --> 200 (34 ms)
+[2026-08-31T23:51:51.177Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:51:51.278Z][INFO] project:list-packages --> 200 (101 ms)
+[2026-08-31T23:51:51.638Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:51:51.773Z][INFO] project:list-packages --> 200 (135 ms)
+[2026-08-31T23:51:51.812Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:51:51.816Z][INFO] config:project:get-registries --> 200 (5 ms)
+[2026-08-31T23:51:52.984Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:51:53.203Z][INFO] packages:get-packageinfo --> 200 (219 ms)
+[2026-08-31T23:52:31.991Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:52:32.101Z][INFO] project:list-packages --> 200 (110 ms)
+[2026-08-31T23:52:32.432Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-31T23:52:32.540Z][INFO] project:list-packages --> 200 (108 ms)
+[2026-08-31T23:52:32.581Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-31T23:52:32.584Z][INFO] config:project:get-registries --> 200 (3 ms)
+[2026-08-31T23:52:33.675Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-08-31T23:52:33.916Z][INFO] packages:get-packageinfo --> 200 (241 ms)
+[2026-09-01T00:00:44.498Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-09-01T00:00:44.604Z][INFO] project:list-packages --> 200 (106 ms)
+[2026-09-01T00:00:44.933Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-09-01T00:00:45.050Z][INFO] project:list-packages --> 200 (117 ms)
+[2026-09-01T00:00:45.094Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-09-01T00:00:45.098Z][INFO] config:project:get-registries --> 200 (4 ms)
+[2026-09-01T00:00:46.137Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-09-01T00:00:46.352Z][INFO] packages:get-packageinfo --> 200 (215 ms)
+[2026-09-01T00:02:28.631Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-09-01T00:02:28.749Z][INFO] project:list-packages --> 200 (118 ms)
+[2026-09-01T00:02:29.073Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-09-01T00:02:29.188Z][INFO] project:list-packages --> 200 (116 ms)
+[2026-09-01T00:02:29.228Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-09-01T00:02:29.231Z][INFO] config:project:get-registries --> 200 (3 ms)
+[2026-09-01T00:02:30.280Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ide.rider"
+}
+[2026-09-01T00:02:30.511Z][INFO] packages:get-packageinfo --> 200 (231 ms)
