@@ -2,6 +2,7 @@
     Single source of truth/Keep things simple stupid
     -Change of plans, keeping Waypoint movement with physics control, with a trigger box before each waypoint to act as the swap to the next waypoint
     -Ensure collision works fine as well, turn off targeting to do this best
+    ----Maybe do a hybrid? Navmesh agent for me to learn to use it, with waypoints that the nevmesh agents are sent towards instead of just setting their target to the end goal
     -Make sure that the towers and base are all still hittable by the 1 range melee units, the fix in place should still work?
     Testing script
     -Button press simulated
