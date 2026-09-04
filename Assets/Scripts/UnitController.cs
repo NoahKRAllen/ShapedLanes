@@ -16,14 +16,14 @@ public class UnitController : MonoBehaviour
     private int _waypointIndex;
     private int _direction = 1;
     [Tooltip("This is for readonly purposes to see what is actively being targeted")]
-    [SerializeField] private Transform _target;
+    [SerializeField] private Unit _target;
     private float _scanTimer;
     private MoveState _state = MoveState.FollowingWaypoints;
     private Unit _unit;
     
     private bool _withinRange;
     private float _nextAttackTime;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         _unit = GetComponent<Unit>();
@@ -67,7 +67,7 @@ public class UnitController : MonoBehaviour
         if (_nextAttackTime <= 0f && _target)
         {
             _nextAttackTime = 1f / _unit.attackSpeed;
-            //Do Attack
+            //TODO:Do Attack
         }
         
     }
@@ -83,7 +83,7 @@ public class UnitController : MonoBehaviour
     {
         // Keep the current target as long as it's alive and still in range, rather than
         // re-picking "closest" every scan - avoids flickering between two nearby enemies.
-        if (_target && Vector3.Distance(transform.position, _target.position) <= _unit.agroRadius)
+        if (_target && Vector3.Distance(transform.position, _target.transform.position) <= _unit.agroRadius)
             return;
 
         int count = Physics.OverlapSphereNonAlloc(transform.position, _unit.agroRadius, ScanBuffer, enemyLayerMask);
@@ -102,7 +102,7 @@ public class UnitController : MonoBehaviour
             }
         }
 
-        _target = closest;
+        if (closest != null) _target = closest.GetComponent<Unit>();
         _state = _target != null ? MoveState.Attacking : MoveState.FollowingWaypoints;
     }
 
@@ -114,7 +114,7 @@ public class UnitController : MonoBehaviour
             return;
         }
 
-        float distance = Vector3.Distance(transform.position, _target.position) - _target.localScale[0] / 2;
+        float distance = Vector3.Distance(transform.position, _target.transform.position) - _target.transform.localScale[0] / 2;
         
         if (distance > _unit.agroRadius)
         {
@@ -128,12 +128,12 @@ public class UnitController : MonoBehaviour
         
         if (distance > _unit.attackRange)
         {
-            MoveTowards(_target.position);
+            MoveTowards(_target.transform.position);
         }
         else
         {
             //_unit.combatController.StartAttack(_target.GetComponent<Unit>());
-            // TODO:Attack combat hook here
+            // TODO:Attack combat hook here This may be just as simple as a bool for the update cycle to check if we are good to attack
             
             // In attack range - hold position. Hook a combat/attack script in here later.
             // Still subject to physics separation, so units piling up on the same target
@@ -157,7 +157,10 @@ public class UnitController : MonoBehaviour
             return;
         }
 
-        //TODO: Trim this and replace it with callable function upon entering trigger boxes that will be setup across the lanes before each waypoint
+        /*TODO: Trim this and replace it with callable function upon entering trigger boxes that will be setup across the lanes before each waypoint
+            Could potentially just increase waypointArriveDistance?
+        */ 
+        
         //if (Vector3.Distance(transform.position, waypoint.position) <= waypointArriveDistance)
         //{
         //    _waypointIndex += _direction;
