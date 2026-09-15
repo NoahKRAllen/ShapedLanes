@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 2817299151735743789}
   - component: {fileID: 8953745603822534407}
   - component: {fileID: 7101591940628571087}
-  - component: {fileID: 7790779276790334586}
-  - component: {fileID: 4495627080224956725}
   - component: {fileID: 1869529075896619296}
   - component: {fileID: -4313858657319391255}
   - component: {fileID: -8363863789719422677}
+  - component: {fileID: 4814417032515137627}
+  - component: {fileID: 4209244301387662782}
+  - component: {fileID: 4616112262952382766}
   m_Layer: 7
-  m_Name: EnemyUnit
+  m_Name: EnemyMeleeUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 2450092929727120682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,54 +96,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7790779276790334586
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450092929727120682}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4495627080224956725
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450092929727120682}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1869529075896619296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,12 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a1e29cab573a47ac89542719876d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMover
-  waypointArriveDistance: 0.2
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  targetScanInterval: 0.25
-  _target: {fileID: 0}
+  waypointArriveDistance: 2
+  targetRepathThreshold: 0.25
+  target: {fileID: 0}
 --- !u!114 &-4313858657319391255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +131,9 @@ MonoBehaviour:
   attackRange: 2
   movementSpeed: 3
   agroRadius: 5
-  unitMover: {fileID: 0}
-  combatController: {fileID: 0}
+  unitMover: {fileID: 1869529075896619296}
+  combatController: {fileID: -8363863789719422677}
+  targetingController: {fileID: 4616112262952382766}
 --- !u!114 &-8363863789719422677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +147,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
   _target: {fileID: 0}
+--- !u!195 &4814417032515137627
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450092929727120682}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!135 &4209244301387662782
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450092929727120682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4616112262952382766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450092929727120682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9f92da53ba66a4787753700661719c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetingController
+  targetScanInterval: 0.25
+  target: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64

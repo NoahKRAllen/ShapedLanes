@@ -21,12 +21,11 @@ public class Unit : MonoBehaviour
     [Header("Controls")]
     public UnitMover unitMover;
     public CombatController combatController;
-    public UnitController unitController;
+    public TargetingController targetingController;
     private void Awake()
     {
-        if(!unitMover) unitMover = GetComponent<UnitMover>();
         if(!combatController) combatController = GetComponent<CombatController>();
-        if(!unitController) unitController = GetComponent<UnitController>();
+        if(!targetingController) targetingController = GetComponent<TargetingController>();
         health = maxHealth;
     }
 
