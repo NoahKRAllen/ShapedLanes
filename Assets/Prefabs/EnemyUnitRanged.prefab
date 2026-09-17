@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1869529075896619296}
   - component: {fileID: -8605462167240663760}
   - component: {fileID: 8787194492003329689}
+  - component: {fileID: 2051780153087014374}
   - component: {fileID: 4814417032515137627}
   - component: {fileID: 8394049399051781009}
-  - component: {fileID: 2051780153087014374}
   m_Layer: 7
   m_Name: EnemyUnitRanged
   m_TagString: Untagged
@@ -131,7 +131,9 @@ MonoBehaviour:
   attackRange: 5
   movementSpeed: 3
   agroRadius: 5
-  unitMover: {fileID: 1869529075896619296}
+  isMobile: 1
+  unitMovementController: {fileID: 1869529075896619296}
+  stationaryUnitController: {fileID: 0}
   combatController: {fileID: 8787194492003329689}
   targetingController: {fileID: 2051780153087014374}
 --- !u!114 &8787194492003329689
@@ -146,7 +148,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0630621e1c34984c8fed31b463150dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  _target: {fileID: 0}
+  target: {fileID: 0}
+--- !u!114 &2051780153087014374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450092929727120682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9f92da53ba66a4787753700661719c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetingController
+  targetScanInterval: 0.25
+  target: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!195 &4814417032515137627
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -192,20 +211,3 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2051780153087014374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450092929727120682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac9f92da53ba66a4787753700661719c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TargetingController
-  targetScanInterval: 0.25
-  target: {fileID: 0}
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 64

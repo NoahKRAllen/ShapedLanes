@@ -6,14 +6,14 @@ public class CombatController : MonoBehaviour
     private Unit _unit;
     private float _nextAttackTime;
     
-    //Only serialized for easy viewing in editor without needed to activate debug mode
-    [SerializeField] private CombatController _target;
+    [Tooltip("This is for readonly purposes to see what is actively being targeted")]
+    [SerializeField] private CombatController target;
 
     void Awake()
     {
         _unit = GetComponent<Unit>();
         if (_unit != null) return;
-        print("Missing unit on "  + gameObject.name);
+        print("Missing Unit class on "  + gameObject.name);
         gameObject.SetActive(false);
     }
 
@@ -29,25 +29,10 @@ public class CombatController : MonoBehaviour
         }
 
         if (!(_nextAttackTime <= 0.0f) || !_withinRange) return;
-        if (_target)
-        {
-            print(_unit.name + " attacking " + _target.name);
-            DealDamage();
-            _nextAttackTime = 1f / _unit.attackSpeed;
-                
-        }
-    }
-
-    public void DealDamage(int incomingDamage = 0)
-    {
-        if (incomingDamage == 0)
-        {
-            _target.TakeDamage(_unit.damage);
-        }
-        else
-        {
-            _target.TakeDamage(incomingDamage);
-        }
+        _nextAttackTime = 1f / _unit.attackSpeed;
+        if (!target) return;
+        print(_unit.name + " attacking " + target.name);
+        target.TakeDamage(_unit.damage);
     }
 
     private void TakeDamage(float incomingDamage)
@@ -60,15 +45,50 @@ public class CombatController : MonoBehaviour
         Destroy(gameObject);
     }
     
-    public void StartAttack(Unit target)
+    public void StartAttack(Transform newTarget)
     {
+        if (!newTarget)
+        {
+            //May be able to remove this but would need to do null checks on every time this is called to ensure no crashing on null references
+            print($"{gameObject.name} tried to start attack on null target");
+            return;
+        }
         _withinRange = true;
-        _target = target.combatController;
+        target = newTarget.GetComponent<CombatController>();
     }
 
     public void StopAttack()
     {
         _withinRange = false;
-        _target = null;
+        target = null;
     }
+    
+    
+    
+    /*
+     * Potential future fix if we run into issues with the GetComponent<CombatController>() call as we ramp up unit amounts
+     * We would just be able to do the TryGetValue to grab the target's CombatController instead but I'm unfamiliar with this so I went with some minimal checks instead for now
+    private static readonly Dictionary<Transform, CombatController> Registry = new();
+
+    private void OnEnable() => Registry[transform] = this;
+    private void OnDisable() => Registry.Remove(transform);
+
+    public void StartAttack(Transform newTarget)
+    {
+        if (!newTarget)
+        {
+            print($"{gameObject.name} tried to start attack on null target");
+            return;
+        }
+
+        if (!Registry.TryGetValue(newTarget, out var targetController))
+        {
+            print($"No CombatController registered for {newTarget.name}");
+            return;
+        }
+
+        _withinRange = true;
+        target = targetController;
+    }
+     */
 }

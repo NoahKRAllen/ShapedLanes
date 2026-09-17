@@ -15,15 +15,10 @@ public class TargetingController : MonoBehaviour
     
     private Unit _unit;
 
-    private bool _stationaryUnit = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _unit = GetComponent<Unit>();
-        if (_unit.unitMover == null)
-        {
-            _stationaryUnit = true;
-        }
     }
 
     // Update is called once per frame
@@ -62,19 +57,28 @@ public class TargetingController : MonoBehaviour
 
         target = closest;
 
-        if (_stationaryUnit)
+        if (_unit.isMobile)
         {
-            //TODO: Build new script for towers that handles the attack trigger that is currently done inside of UnitMover
+            if (!target)
+            {
+                print("No target, swapping to follow waypoints");
+                _unit.unitMovementController.SetTarget(null);
+                return;
+            }
+
+            print($"Target found, setting attacking state to {target.name}");
+            _unit.unitMovementController.SetTarget(target);
             return;
         }
-        
-        if (target == null)
+
+        //TODO: Build new script for towers that handles the attack trigger that is currently done inside of UnitMovementController
+        if (!target)
         {
-            print("No target, swapping to follow waypoints");
-            _unit.unitMover.SetToAttackingState(null);
+            print($"{gameObject.name} lost target, going passive");
+            _unit.stationaryUnitController.SetTarget(null);
             return;
         }
-        print($"Target found, setting attacking state to {target.name}");
-        _unit.unitMover.SetToAttackingState(target);
+        print($"{gameObject.name} found target, attacking {target.name}");
+        _unit.stationaryUnitController.SetTarget(target);
     }
 }

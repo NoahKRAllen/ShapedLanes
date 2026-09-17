@@ -104,6 +104,8 @@ GameObject:
   - component: {fileID: 2049506388079685594}
   - component: {fileID: 8110579169908316161}
   - component: {fileID: 2274202120636888595}
+  - component: {fileID: -7903917319563295954}
+  - component: {fileID: 7980033585877056918}
   m_Layer: 7
   m_Name: EnemyTower
   m_TagString: Untagged
@@ -197,14 +199,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unit
   unitName: 
-  health: 20
-  maxHealth: 20
-  damage: 10
+  health: 300
+  maxHealth: 300
+  damage: 20
   attackSpeed: 0.5
   attackRange: 8
   movementSpeed: 0
   agroRadius: 8
-  unitMover: {fileID: 0}
+  isMobile: 0
+  unitMovementController: {fileID: 0}
+  stationaryUnitController: {fileID: -7903917319563295954}
   combatController: {fileID: 8110579169908316161}
   targetingController: {fileID: 2274202120636888595}
 --- !u!114 &8110579169908316161
@@ -219,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0630621e1c34984c8fed31b463150dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  _target: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &2274202120636888595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,3 +241,39 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &-7903917319563295954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718127975667666101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c34697bfabf4e645a243b88284bf738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StationaryUnitController
+  target: {fileID: 0}
+--- !u!136 &7980033585877056918
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718127975667666101}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

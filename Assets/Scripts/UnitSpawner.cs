@@ -15,19 +15,19 @@ public class UnitSpawner : MonoBehaviour
     {
         if (unitPrefab == null)
         {
-            Debug.LogWarning($"{nameof(UnitSpawner)}.{nameof(SpawnUnit)} was called with no prefab assigned.", this);
+            print($"{gameObject.name}.SpawnUnit was called with no prefab assigned.");
             return;
         }
  
         if (spawnPoint == null)
         {
-            Debug.LogError($"{nameof(UnitSpawner)} has no spawn point assigned.", this);
+            print($"{gameObject.name} has no spawn point assigned.");
             return;
         }
  
         GameObject unit = Instantiate(unitPrefab, spawnPoint.position, spawnPoint.rotation, unitsContainer);
  
-        UnitMover mover = unit.GetComponent<UnitMover>();
+        UnitMovementController mover = unit.GetComponent<UnitMovementController>();
         if (mover != null && lane != null)
         {
             mover.Initialize(lane);

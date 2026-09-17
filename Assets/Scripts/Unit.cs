@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Unit : MonoBehaviour
 {
     public string unitName;
@@ -17,11 +17,13 @@ public class Unit : MonoBehaviour
     [Header("Movement Stats")]
     public float movementSpeed;
     public float agroRadius;
-
+    public bool isMobile = false;
     [Header("Controls")]
-    public UnitMover unitMover;
+    public UnitMovementController unitMovementController;
+    public StationaryUnitController stationaryUnitController;
     public CombatController combatController;
     public TargetingController targetingController;
+    
     private void Awake()
     {
         if(!combatController) combatController = GetComponent<CombatController>();

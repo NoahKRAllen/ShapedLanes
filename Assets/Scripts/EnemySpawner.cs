@@ -7,7 +7,7 @@ using UnityEngine;
 /// automatically when the scene begins.
 ///
 /// Enemies spawn at spawnPoint (typically the base end of the lane) and walk the same
-/// LaneWaypoints the player's units use, but in reverse - see UnitMover.Initialize.
+/// LaneWaypoints the player's units use, but in reverse - see UnitMovementController.Initialize.
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
@@ -30,19 +30,19 @@ public class EnemySpawner : MonoBehaviour
     {
         if (waveData == null)
         {
-            Debug.LogWarning($"{nameof(EnemySpawner)} has no WaveData assigned - no enemies will spawn.", this);
+           print($"{gameObject.name} has no WaveData assigned - no enemies will spawn.");
             return;
         }
 
         if (lane == null)
         {
-            Debug.LogError($"{nameof(EnemySpawner)} has no lane assigned.", this);
+            print($"{gameObject.name} has no lane assigned.");
             return;
         }
 
         if (spawnPoint == null)
         {
-            Debug.LogError($"{nameof(EnemySpawner)} has no spawn point assigned.", this);
+            print($"{gameObject.name} has no spawn point assigned.");
             return;
         }
 
@@ -54,16 +54,16 @@ public class EnemySpawner : MonoBehaviour
     
     private void SpawnEnemy(GameObject toSpawn)
     {
-        if (toSpawn == null)
+        if (!toSpawn)
         {
-            Debug.LogWarning($"{nameof(EnemySpawner)}'s WaveData has no enemyPrefab assigned.", this);
+            print($"{gameObject.name}'s WaveData has no enemyPrefab assigned.");
             return;
         }
 
         GameObject enemy = Instantiate(toSpawn, spawnPoint.position, spawnPoint.rotation, enemiesContainer);
 
 
-        if (!enemy.TryGetComponent(out UnitMover mover)) return;
+        if (!enemy.TryGetComponent(out UnitMovementController mover)) return;
         int startWaypointIndex = lane.WaypointCount - 1;
         mover.Initialize(lane, startWaypointIndex, reversed: true);
     }

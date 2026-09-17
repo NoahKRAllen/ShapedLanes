@@ -41,7 +41,7 @@ public class TopDownCameraPan : MonoBehaviour
         
         if (_camera == null)
         {
-            Debug.LogError($"{nameof(TopDownCameraPan)} requires a Camera in its children.", this);
+            print($"{gameObject.name} requires a Camera in its children.");
             enabled = false;
         }
     }
@@ -187,7 +187,8 @@ public class TopDownCameraPan : MonoBehaviour
     }
     
     private void OnDrawGizmosSelected()
-    {        // 1. Calculate the center point between the two coordinates
+    {        
+        // 1. Calculate the center point between the two coordinates
         float centerX = (boundsMin.x + boundsMax.x) / 2f;
         float centerY = (boundsMin.y + boundsMax.y) / 2f;
         Vector3 center = new Vector3(centerX, centerY);

@@ -14,7 +14,7 @@ public class WaveData : ScriptableObject
     [Tooltip("Seconds between each enemy spawn within this wave.")]
     public float spawnInterval = 1f;
     
-    [Tooltip("The enemy prefab spawned by every wave in this asset. Must have a UnitMover component.")]
+    [Tooltip("The enemy prefab spawned by every wave in this asset. Must have a UnitMovementController component.")]
     public GameObject enemyPrefab;
 
 }

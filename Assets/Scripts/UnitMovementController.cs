@@ -19,8 +19,8 @@ using UnityEngine.Serialization;
 /// (tune Radius / Avoidance Priority per prefab in the inspector) instead of physics
 /// collision like the old Rigidbody version.
 /// </summary>
-[RequireComponent(typeof(NavMeshAgent))]
-public class UnitMover : MonoBehaviour
+[RequireComponent(typeof(NavMeshAgent), typeof(Unit))]
+public class UnitMovementController : MonoBehaviour
 {
     private enum MoveState { FollowingWaypoints, Attacking }
 
@@ -42,7 +42,7 @@ public class UnitMover : MonoBehaviour
 
     //Only serialized for easy viewing in editor without needed to activate debug mode
     [SerializeField] private Transform target;
-    private Unit _targetUnit;
+    private Transform _attackingTarget;
     private Vector3 _lastChaseDestination;
     private float _scanTimer;
     private MoveState _state = MoveState.FollowingWaypoints;
@@ -58,11 +58,14 @@ public class UnitMover : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        if (_unit == null)
+        if (!_unit)
         {
             print("Missing unit on " + gameObject.name);
             gameObject.SetActive(false);
         }
+        
+        //Setting here in case this is forgotten on a prefab in the future
+        _unit.isMobile = true;
 
         // Force the correct setup in code so every unit prefab works right regardless of
         // how its NavMeshAgent was configured in the inspector.
@@ -83,7 +86,7 @@ public class UnitMover : MonoBehaviour
         _lane = lane;
         _waypointIndex = startWaypointIndex;
         _direction = reversed ? -1 : 1;
-
+        
         _agent.speed = _unit.movementSpeed;
         SetWaypointDestination();
     }
@@ -96,27 +99,31 @@ public class UnitMover : MonoBehaviour
             TickFollowingWaypoints();
     }
 
-    public void SetToAttackingState(Transform newTarget)
+    public void SetTarget(Transform newTarget)
     {
-        if (newTarget == null)
+        if (!newTarget)
         {
+            if (_attackingTarget)
+            {
+                _unit.combatController.StopAttack();
+                _attackingTarget = null;
+            }
             _state = MoveState.FollowingWaypoints;
             target = null;
             return;
         }
         _state = MoveState.Attacking;
         target = newTarget;
-        _targetUnit = target.GetComponent<Unit>();
     }
 
     private void TickAttacking()
     {
-        if (target == null)
+        if (!target)
         {
             ResumeWaypoints();
             return;
         }
-
+        
         float distance = Vector3.Distance(transform.position, target.position) - target.localScale[0] / 2;
 
         if (distance > _unit.agroRadius)
@@ -129,25 +136,30 @@ public class UnitMover : MonoBehaviour
 
         if (distance > _unit.attackRange)
         {
+            if (_attackingTarget)
+            {
+                // Pushed back out of attack range - stop attacking until we're back in range.
+                _unit.combatController.StopAttack();
+                _attackingTarget = null;
+            }
             ChaseTarget(target.position);
         }
         else
         {
-            _unit.combatController.StartAttack(_targetUnit);
+            if (target != _attackingTarget)
+            {
+                _unit.combatController.StartAttack(target);
+                _attackingTarget = target;
+            }
             // In attack range - hold position. Agent avoidance still keeps units piling up
             // on the same target from overlapping each other.
             StopAgent();
         }
     }
 
-    public void TargetDead()
-    {
-        target = null;
-    }
-
     private void TickFollowingWaypoints()
     {
-        if (_lane == null || _lane.WaypointCount == 0)
+        if (!_lane|| _lane.WaypointCount == 0)
         {
             StopAgent();
             print("Either lane is null or we have no waypoints setup");
@@ -155,7 +167,7 @@ public class UnitMover : MonoBehaviour
         }
 
         Transform waypoint = _lane.GetWaypoint(_waypointIndex);
-        if (waypoint == null)
+        if (!waypoint)
         {
             StopAgent(); // Reached the end of the lane (arrived at the base / spawn, depending on direction).
             return;
@@ -173,13 +185,14 @@ public class UnitMover : MonoBehaviour
     {
         _state = MoveState.FollowingWaypoints;
         _unit.combatController.StopAttack();
+        _attackingTarget = null;
         SetWaypointDestination();
     }
 
     private void SetWaypointDestination()
     {
-        Transform waypoint = _lane != null ? _lane.GetWaypoint(_waypointIndex) : null;
-        if (waypoint == null)
+        Transform waypoint = _lane ? _lane.GetWaypoint(_waypointIndex) : null;
+        if (!waypoint)
         {
             StopAgent();
             return;
