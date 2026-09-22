@@ -5,6 +5,9 @@ public class ResourceManager : MonoBehaviour
 {
     private int _resourceTotal;
     [SerializeField] private TextMeshProUGUI resourceTotalText;
+    
+    [SerializeField] private int passiveIncome;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,5 +21,11 @@ public class ResourceManager : MonoBehaviour
         {
             resourceTotalText.text = _resourceTotal.ToString();
         }
+    }
+    
+    //TODO: See if I can find a way to not have the add money function be public
+    public void AddToResource(int amount)
+    {
+        _resourceTotal += amount;
     }
 }

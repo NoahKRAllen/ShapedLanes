@@ -13,7 +13,8 @@ public class Unit : MonoBehaviour
     public float damage;
     public float attackSpeed;
     public float attackRange;
-
+    public int resourceValue;
+    
     [Header("Movement Stats")]
     public float movementSpeed;
     public float agroRadius;
