@@ -13,12 +13,13 @@ public class Unit : MonoBehaviour
     public float damage;
     public float attackSpeed;
     public float attackRange;
-    public int resourceValue;
-    
+    public int spawnCost;
+    public int killValue;
     [Header("Movement Stats")]
     public float movementSpeed;
     public float agroRadius;
     public bool isMobile = false;
+    
     [Header("Controls")]
     public UnitMovementController unitMovementController;
     public StationaryUnitController stationaryUnitController;
