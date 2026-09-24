@@ -204,6 +204,8 @@ MonoBehaviour:
   damage: 20
   attackSpeed: 0.5
   attackRange: 8
+  spawnCost: 0
+  killValue: 100
   movementSpeed: 0
   agroRadius: 8
   isMobile: 0

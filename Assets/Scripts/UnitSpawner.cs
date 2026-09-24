@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using UnityEngine;
 
 public class UnitSpawner : MonoBehaviour
@@ -11,22 +12,27 @@ public class UnitSpawner : MonoBehaviour
     [Tooltip("The lane this spawner feeds units into. Each lane should have its own spawner + buttons.")]
     [SerializeField] private LaneWaypoints lane;
  
-    public void SpawnUnit(GameObject unitPrefab)
+    public void SpawnUnit(Unit unitPrefab)
     {
-        if (unitPrefab == null)
+        if (!unitPrefab)
         {
             print($"{gameObject.name}.SpawnUnit was called with no prefab assigned.");
             return;
         }
  
-        if (spawnPoint == null)
+        if (!spawnPoint)
         {
             print($"{gameObject.name} has no spawn point assigned.");
             return;
         }
- 
-        GameObject unit = Instantiate(unitPrefab, spawnPoint.position, spawnPoint.rotation, unitsContainer);
- 
+
+        if (ResourceManager.ResourceManagerInstance.CheckResource() < unitPrefab.spawnCost)
+        {
+            print($"Not enough funds for spawning {unitPrefab.name}");
+            return;
+        }
+        GameObject unit = Instantiate(unitPrefab.gameObject, spawnPoint.position, spawnPoint.rotation, unitsContainer);
+        ResourceManager.ResourceManagerInstance.RemoveFromResource(unitPrefab.spawnCost);
         UnitMovementController mover = unit.GetComponent<UnitMovementController>();
         if (mover != null && lane != null)
         {

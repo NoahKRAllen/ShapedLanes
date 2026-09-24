@@ -1,18 +1,13 @@
 /*  TODO:
     Single source of truth/Keep things simple stupid
-    -Change of plans, keeping Waypoint movement with physics control, with a trigger box before each waypoint to act as the swap to the next waypoint
-    -Ensure collision works fine as well, turn off targeting to do this best
-    ----Maybe do a hybrid? Navmesh agent for me to learn to use it, with waypoints that the navmesh agents are sent towards instead of just setting their target to the end goal
-    ----Add back navmesh and navmesh agents, use agent.destination linked to the waypoints, with the waypointArriveDistance that is currently in use being the determining factor of we are close enough to swap to next waypoint
-    -Make sure that the towers and base are all still hittable by the 1 range melee units, the fix in place should still work?
-    Testing script
-    -Button press simulated
     Monetary system
     -Earn cash by killing units/towers
     -Earn cash slowly over time
     -Spend cash to spawn units
     --Potentially change the waves to a cash system as well?
     --Test
+    Testing script
+    -Button press simulated
     
     
     What have we tried and moved on from:
@@ -38,6 +33,14 @@
     Win condition(Destroy opposing base)
     Animation for OnHit, probably some kind of pixel particle system of the same color as the unit being hit along with maybe a flinch on the unit
     
+    
+    Finished TODOs:
+    
+    -Change of plans, keeping Waypoint movement with physics control, with a trigger box before each waypoint to act as the swap to the next waypoint
+    -Ensure collision works fine as well, turn off targeting to do this best
+    ----Maybe do a hybrid? Navmesh agent for me to learn to use it, with waypoints that the navmesh agents are sent towards instead of just setting their target to the end goal
+    ----Add back navmesh and navmesh agents, use agent.destination linked to the waypoints, with the waypointArriveDistance that is currently in use being the determining factor of we are close enough to swap to next waypoint
+    -Make sure that the towers and base are all still hittable by the 1 range melee units, the fix in place should still work?
 */
 
 

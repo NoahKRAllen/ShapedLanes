@@ -21,7 +21,7 @@ public class CombatController : MonoBehaviour
     {
         if (_unit.health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
         if (_nextAttackTime > 0.0f)
         {
@@ -40,8 +40,11 @@ public class CombatController : MonoBehaviour
         print(_unit.name + " damaged " + incomingDamage);
         _unit.health -= incomingDamage;
         print(_unit.name + "left with " + _unit.health);
-        if (_unit.health > 0) return;
-        print(_unit.name + " is dead");
+    }
+
+    private void Die()
+    {
+        ResourceManager.ResourceManagerInstance.AddToResource(_unit.killValue);
         Destroy(gameObject);
     }
     
