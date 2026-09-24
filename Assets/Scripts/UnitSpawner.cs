@@ -12,7 +12,7 @@ public class UnitSpawner : MonoBehaviour
     [Tooltip("The lane this spawner feeds units into. Each lane should have its own spawner + buttons.")]
     [SerializeField] private LaneWaypoints lane;
  
-    public void SpawnUnit(GameObject unitPrefab, int unitCost)
+    public void SpawnUnit(Unit unitPrefab)
     {
         if (!unitPrefab)
         {
@@ -26,13 +26,13 @@ public class UnitSpawner : MonoBehaviour
             return;
         }
 
-        if (ResourceManager.ResourceManagerInstance.CheckResource() > unitCost)
+        if (ResourceManager.ResourceManagerInstance.CheckResource() < unitPrefab.spawnCost)
         {
             print($"Not enough funds for spawning {unitPrefab.name}");
             return;
         }
-        GameObject unit = Instantiate(unitPrefab, spawnPoint.position, spawnPoint.rotation, unitsContainer);
-        ResourceManager.ResourceManagerInstance.RemoveFromResource(unitCost);
+        GameObject unit = Instantiate(unitPrefab.gameObject, spawnPoint.position, spawnPoint.rotation, unitsContainer);
+        ResourceManager.ResourceManagerInstance.RemoveFromResource(unitPrefab.spawnCost);
         UnitMovementController mover = unit.GetComponent<UnitMovementController>();
         if (mover != null && lane != null)
         {

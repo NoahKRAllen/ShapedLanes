@@ -5,7 +5,7 @@ public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager ResourceManagerInstance;
     
-    private int _resourceTotal;
+    [SerializeField] int _resourceTotal;
     [SerializeField] private TextMeshProUGUI resourceTotalText;
     [SerializeField] private float incomeTimer;
     private float _currentTimer;
@@ -34,6 +34,7 @@ public class ResourceManager : MonoBehaviour
         if (_currentTimer > incomeTimer)
         {
             _resourceTotal += passiveIncome;
+            _currentTimer = 0;
         }
     }
     
