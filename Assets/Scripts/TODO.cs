@@ -1,13 +1,20 @@
 /*  TODO:
     Single source of truth/Keep things simple stupid
     Monetary system
-    -Earn cash by killing units/towers
-    -Earn cash slowly over time
     -Spend cash to spawn units
     --Potentially change the waves to a cash system as well?
     --Test
     Testing script
     -Button press simulated
+    Two split gametypes/wavetypes:
+    -Both sides cash based
+    --Destructible towers and base on both sides
+    --Base destruction is win condition. 
+    -Player cash/enemy waves
+    --Player has two indestructible towers that make kill zone stopping all enemies at spot on map
+    --Enemy death grants income, more income granted if enemy was attacked by player unit before death
+    --Enemy has destructible towers and base
+    --Enemy units are a constant flow, with scaling stats at higher levels
     
     
     What have we tried and moved on from:
