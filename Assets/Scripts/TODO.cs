@@ -9,13 +9,13 @@
     Two split gametypes/wavetypes:
     -Both sides cash based
     --Destructible towers and base on both sides
-    --Base destruction is win condition. 
+    --Base destruction is win condition.  
     -Player cash/enemy waves
     --Player has two indestructible towers that make kill zone stopping all enemies at spot on map
     --Enemy death grants income, more income granted if enemy was attacked by player unit before death
     --Enemy has destructible towers and base
     --Enemy units are a constant flow, with scaling stats at higher levels
-    
+    -Decide on in-match upgrades
     
     What have we tried and moved on from:
     -Individual waves being a class
