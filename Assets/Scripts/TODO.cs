@@ -15,7 +15,7 @@
     --Enemy death grants income, more income granted if enemy was attacked by player unit before death
     --Enemy has destructible towers and base
     --Enemy units are a constant flow, with scaling stats at higher levels
-    -Decide on in-match upgrades
+    -Decide on in-match upgrades ---Daily update
     
     What have we tried and moved on from:
     -Individual waves being a class
