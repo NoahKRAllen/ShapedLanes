@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8680425304207410458}
   m_Layer: 6
   m_Name: PlayerMeleeUnit
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   waypointArriveDistance: 2
   targetRepathThreshold: 0.25
   target: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!114 &-511446868608190222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unit
   unitName: 
-  health: 10
-  maxHealth: 20
+  health: 40
+  maxHealth: 40
   damage: 5
   attackSpeed: 1
   attackRange: 2

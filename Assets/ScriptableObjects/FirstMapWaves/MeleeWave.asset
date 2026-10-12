@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MeleeWave
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   delayBeforeWave: 5
-  spawnInterval: 1.33
+  spawnInterval: 1.4
   enemyPrefab: {fileID: 2450092929727120682, guid: 8a8a67b5354c4044ebce540b4866e90c, type: 3}

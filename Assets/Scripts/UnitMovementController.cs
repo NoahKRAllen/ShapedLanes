@@ -47,7 +47,8 @@ public class UnitMovementController : MonoBehaviour
     private float _scanTimer;
     private MoveState _state = MoveState.FollowingWaypoints;
     private Unit _unit;
-
+    
+    [SerializeField] private GameOver gameOver;
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -125,6 +126,15 @@ public class UnitMovementController : MonoBehaviour
         }
         
         float distance = Vector3.Distance(transform.position, target.position) - target.localScale[0] / 2;
+        Transform waypoint = _lane.GetWaypoint(_waypointIndex);
+        if (waypoint)
+        {
+            if (Vector3.Distance(transform.position, waypoint.position) <= waypointArriveDistance)
+            {
+                _waypointIndex += _direction;
+                SetWaypointDestination();
+            }
+        }
 
         if (distance > _unit.agroRadius)
         {
@@ -173,7 +183,6 @@ public class UnitMovementController : MonoBehaviour
             return;
         }
 
-        //TODO: Trim this and replace it with callable function upon entering trigger boxes that will be setup across the lanes before each waypoint
         if (Vector3.Distance(transform.position, waypoint.position) <= waypointArriveDistance)
         {
             _waypointIndex += _direction;

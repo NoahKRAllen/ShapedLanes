@@ -32,6 +32,7 @@ public class UnitSpawner : MonoBehaviour
             return;
         }
         GameObject unit = Instantiate(unitPrefab.gameObject, spawnPoint.position, spawnPoint.rotation, unitsContainer);
+        unit.SetActive(true);
         ResourceManager.ResourceManagerInstance.RemoveFromResource(unitPrefab.spawnCost);
         UnitMovementController mover = unit.GetComponent<UnitMovementController>();
         if (mover != null && lane != null)

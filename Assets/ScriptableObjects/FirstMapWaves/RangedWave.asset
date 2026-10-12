@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: RangedWave
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   delayBeforeWave: 6
-  spawnInterval: 2
+  spawnInterval: 1.5
   enemyPrefab: {fileID: 2450092929727120682, guid: 4ff274646bdc0fe4d81c4b736b4510ec, type: 3}
-  firstWave: 0

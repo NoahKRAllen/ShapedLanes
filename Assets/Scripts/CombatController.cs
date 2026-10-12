@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CombatController : MonoBehaviour
 {
+    [Tooltip("Optional. Fires when this object dies, before it is destroyed. Leave empty for ordinary units and towers")]
+    public UnityEvent onDied;
+
+    private bool _isDead = false;
     private bool _withinRange;
     private Unit _unit;
     private float _nextAttackTime;
@@ -31,20 +36,23 @@ public class CombatController : MonoBehaviour
         if (!(_nextAttackTime <= 0.0f) || !_withinRange) return;
         _nextAttackTime = 1f / _unit.attackSpeed;
         if (!target) return;
-        print(_unit.name + " attacking " + target.name);
+        //print(_unit.name + " attacking " + target.name);
         target.TakeDamage(_unit.damage);
     }
 
     private void TakeDamage(float incomingDamage)
     {
-        print(_unit.name + " damaged " + incomingDamage);
+        //print(_unit.name + " damaged " + incomingDamage);
         _unit.health -= incomingDamage;
-        print(_unit.name + "left with " + _unit.health);
+        //print(_unit.name + " left with " + _unit.health);
     }
 
     private void Die()
     {
+        if (_isDead) return;
+        _isDead = true;
         ResourceManager.ResourceManagerInstance.AddToResource(_unit.killValue);
+        onDied?.Invoke();
         Destroy(gameObject);
     }
     

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7782360378136046787}
   m_Layer: 6
   m_Name: PlayerRangedUnit
-  m_TagString: Untagged
+  m_TagString: Ranged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   waypointArriveDistance: 2
   targetRepathThreshold: 0.25
   target: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!114 &2802835870898799113
 MonoBehaviour:
   m_ObjectHideFlags: 0

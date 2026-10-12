@@ -4,17 +4,15 @@ using UnityEngine.UI;
 
 public class ButtonDelay : MonoBehaviour
 {
-    [SerializeField] private Button myButton;
-
-    public void OnButtonClick()
+    public void OnButtonClick(Button button)
     {
-        StartCoroutine(DisableButtonRoutine());
+        StartCoroutine(DisableButtonRoutine(button));
     }
 
-    private IEnumerator DisableButtonRoutine()
+    private IEnumerator DisableButtonRoutine(Button button)
     {
-        myButton.interactable = false;
+        button.interactable = false;
         yield return new WaitForSeconds(0.5f);
-        myButton.interactable = true;
+        button.interactable = true;
     }
 }

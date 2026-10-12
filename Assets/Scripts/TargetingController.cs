@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class TargetingController : MonoBehaviour
@@ -43,15 +44,15 @@ public class TargetingController : MonoBehaviour
 
         Transform closest = null;
         float closestSqrDist = float.MaxValue;
-
+        
         for (int i = 0; i < count; i++)
         {
-            Transform candidate = ScanBuffer[i].transform;
-            float sqrDist = (candidate.position - transform.position).sqrMagnitude;
+            Vector3 closestPoint = ScanBuffer[i].ClosestPoint(transform.position);
+            float sqrDist = (closestPoint - transform.position).sqrMagnitude;
             if (sqrDist < closestSqrDist)
             {
                 closestSqrDist = sqrDist;
-                closest = candidate;
+                closest = ScanBuffer[i].transform;
             }
         }
 
@@ -61,12 +62,12 @@ public class TargetingController : MonoBehaviour
         {
             if (!target)
             {
-                print("No target, swapping to follow waypoints");
+                //print("No target, swapping to follow waypoints");
                 _unit.unitMovementController.SetTarget(null);
                 return;
             }
 
-            print($"Target found, setting attacking state to {target.name}");
+            //print($"Target found, setting attacking state to {target.name}");
             _unit.unitMovementController.SetTarget(target);
             return;
         }
@@ -74,11 +75,11 @@ public class TargetingController : MonoBehaviour
         //TODO: Build new script for towers that handles the attack trigger that is currently done inside of UnitMovementController
         if (!target)
         {
-            print($"{gameObject.name} lost target, going passive");
+            //print($"{gameObject.name} lost target, going passive");
             _unit.stationaryUnitController.SetTarget(null);
             return;
         }
-        print($"{gameObject.name} found target, attacking {target.name}");
+        //print($"{gameObject.name} found target, attacking {target.name}");
         _unit.stationaryUnitController.SetTarget(target);
     }
 }

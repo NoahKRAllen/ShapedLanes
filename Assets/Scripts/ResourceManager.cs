@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager ResourceManagerInstance;
     
-    [SerializeField] int _resourceTotal;
+    [SerializeField] int resourceTotal;
     [SerializeField] private TextMeshProUGUI resourceTotalText;
     [SerializeField] private float incomeTimer;
     private float _currentTimer;
@@ -20,20 +21,25 @@ public class ResourceManager : MonoBehaviour
         }
 
         ResourceManagerInstance = this;
-        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        resourceTotal = 100;
+        resourceTotalText.text = "$" + resourceTotal.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_resourceTotal.ToString() != resourceTotalText.text)
+        if (resourceTotal.ToString() != resourceTotalText.text)
         {
-            resourceTotalText.text = _resourceTotal.ToString();
+            resourceTotalText.text = "$" + resourceTotal.ToString();
         }
         _currentTimer += Time.deltaTime;
         if (_currentTimer > incomeTimer)
         {
-            _resourceTotal += passiveIncome;
+            resourceTotal += passiveIncome;
             _currentTimer = 0;
         }
     }
@@ -42,16 +48,16 @@ public class ResourceManager : MonoBehaviour
     //This is called anytime enemy unit dies
     public void AddToResource(int amount)
     {
-        _resourceTotal += amount;
+        resourceTotal += amount;
     }
 
     public void RemoveFromResource(int amount)
     {
-        _resourceTotal -= amount;
+        resourceTotal -= amount;
     }
     //This is called anytime button to spawn is clicked
     public int CheckResource()
     {
-        return _resourceTotal;
+        return resourceTotal;
     }
 }

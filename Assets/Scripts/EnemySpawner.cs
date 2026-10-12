@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Spawns enemy units for one lane, driven by a WaveData asset. Attach one per lane,
@@ -22,10 +23,9 @@ public class EnemySpawner : MonoBehaviour
 
     [Tooltip("Defines the waves this lane will run.")]
     [SerializeField] private WaveData[] waveData;
-    
-    [Tooltip("Shuts down waves on player win")]
-    [SerializeField] private bool playerWon = false;
 
+
+    [SerializeField] private GameOver gameOver;
     private void Start()
     {
         if (waveData == null)
@@ -70,17 +70,19 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator RunWave(WaveData wave)
     {
+        if (gameOver.gameOver)
+        {
+            yield break;
+        }
         if (wave.delayBeforeWave > 0f)
         {
             yield return new WaitForSeconds(wave.delayBeforeWave);
         }
-        while (!playerWon)
+        while (!gameOver.gameOver)
         {
             if (!(wave.spawnInterval > 0f)) continue;
             SpawnEnemy(wave.enemyPrefab);
             yield return new WaitForSeconds(wave.spawnInterval);
         }
     }
-
-    
 }
